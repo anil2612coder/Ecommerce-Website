@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillAccountBook } from "react-icons/ai";
+import { FaShoppingBag } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
 const Header = () => {
   return (
@@ -19,7 +19,7 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              <AiFillAccountBook /> Kharido Happily
+              <FaShoppingBag /> Kharido Happily
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
