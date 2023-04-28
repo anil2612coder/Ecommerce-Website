@@ -1,16 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Contect from "./pages/Contect";
+import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Pagenotfound from "./pages/Pagenotfound";
 import Policy from "./pages/Policy";
+import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/contect" element={<Contect />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/police" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
