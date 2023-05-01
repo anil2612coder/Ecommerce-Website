@@ -33,7 +33,7 @@ const ForgotPassword = () => {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
+              id="exampleInputFavSport"
               placeholder="Enter Your favorite Sport Name "
               required
             />

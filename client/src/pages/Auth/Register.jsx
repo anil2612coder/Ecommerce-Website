@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import "../../styles/AuthStyles.css";
-// import axios from "axios";
-// import { useNavigation } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Register = () => {
@@ -12,29 +12,32 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [answer, setAnswer] = useState("");
-  // const navigate = useNavigation();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(name, email, password, phone, address);
-    // try {
-    //   const res = await axios.post(`/api/v1/auth/register`, {
-    //     name,
-    //     email,
-    //     password,
-    //     phone,
-    //     address,
-    //   });
-    //   if (res.data.success) {
-    //     toast.success(res.data.message);
-    //     // navigate("/login");
-    //   } else {
-    //     toast.error(res.data.message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error("Something went wrong");
-    // }
+
+    try {
+      const res = await axios.post(
+        `http://localhost:8080/api/v1/auth/register`,
+        {
+          name,
+          email,
+          password,
+          phone,
+          address,
+        }
+      );
+      if (res && res.data.success) {
+        toast.success(res.data.message);
+
+        navigate("/login");
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Layout>
@@ -114,7 +117,7 @@ const Register = () => {
                 setAnswer(e.target.value);
               }}
               className="form-control"
-              id="exampleInputAddress"
+              id="exampleInputFavSport"
               placeholder="Enter Your Favorite sports"
               required
             />
