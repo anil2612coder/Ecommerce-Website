@@ -1,7 +1,17 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 const Header = () => {
+  const [auth, setAuth] = useAuth();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -32,16 +42,35 @@ const Header = () => {
                   Category
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/register" href="#">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/login" href="#">
-                  Login
-                </NavLink>
-              </li>
+              {!auth.user ? (
+                <>
+                  {" "}
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/register" href="#">
+                      Register
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/login" href="#">
+                      Login
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <li className="nav-item">
+                    <NavLink
+                      onClick={handleLogout}
+                      className="nav-link"
+                      to="/login"
+                      href="#"
+                    >
+                      Logout
+                    </NavLink>
+                  </li>
+                </>
+              )}
               <li className="nav-item">
                 <NavLink className="nav-link" to="/cart" href="#">
                   Cart (0)
