@@ -1,15 +1,39 @@
 import React, { useState } from "react";
 import "../../styles/AuthStyles.css";
 import Layout from "../../components/Layout/Layout";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [answer, setAnswer] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/auth/forgot-password",
+        {
+          email,
+          newPassword,
+          answer,
+        }
+      );
+      if (res && res.data.success) {
+        console.log(res.data.message);
+
+        navigate("/login");
+      } else {
+        console.log(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <Layout>
       <div className="form-container ">

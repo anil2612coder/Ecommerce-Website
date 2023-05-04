@@ -25,6 +25,7 @@ const Register = () => {
           password,
           phone,
           address,
+          answer
         }
       );
       if (res && res.data.success) {
