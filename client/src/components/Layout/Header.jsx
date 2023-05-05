@@ -44,7 +44,6 @@ const Header = () => {
               </li>
               {!auth.user ? (
                 <>
-                  {" "}
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/register" href="#">
                       Register
@@ -58,16 +57,37 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  {" "}
-                  <li className="nav-item">
+                  <li className="nav-item dropdown">
                     <NavLink
-                      onClick={handleLogout}
-                      className="nav-link"
-                      to="/login"
+                      className="nav-link dropdown-toggle userDashboard"
                       href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      style={{ border: "none", fontWeight: "normal" }}
                     >
-                      Logout
+                      {auth?.user?.name}
                     </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink
+                          to={`/dashboard/${
+                            auth?.user?.role === 1 ? "admin" : "user"
+                          }`}
+                          className="dropdown-item"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
                   </li>
                 </>
               )}

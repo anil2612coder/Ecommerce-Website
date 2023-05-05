@@ -35,6 +35,9 @@
   font-weight: bold !important;
   color: navy !important;
 }
+.userDashboard{
+  font-weight: normal !important;
+}
 
 .navbar-brand {
   font-weight: 700;
