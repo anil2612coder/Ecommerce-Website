@@ -5,11 +5,14 @@ import "./index.css";
 import "antd/dist/reset.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth";
+import { SearchProvider } from "./context/search";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <SearchProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SearchProvider>
   </AuthProvider>
 );
