@@ -3,6 +3,7 @@ import "../../styles/AuthStyles.css";
 import Layout from "../../components/Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -23,11 +24,11 @@ const ForgotPassword = () => {
         }
       );
       if (res && res.data.success) {
-        console.log(res.data.message);
+        toast.success(res.data && res.data.message);
 
         navigate("/login");
       } else {
-        console.log(res.data.message);
+        toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);

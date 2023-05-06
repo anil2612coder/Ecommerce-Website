@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import "../../styles/AuthStyles.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -25,14 +26,15 @@ const Register = () => {
           password,
           phone,
           address,
-          answer
+          answer,
         }
       );
       if (res && res.data.success) {
-        console.log(res.data.message);
+        toast.success(`new user is created`);
+
         navigate("/login");
       } else {
-        console.log(res.data.message);
+        toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
