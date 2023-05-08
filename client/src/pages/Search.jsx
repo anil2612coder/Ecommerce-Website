@@ -4,7 +4,7 @@ import { useSearch } from "../context/search";
 const Search = () => {
   const [values, setValues] = useSearch();
   return (
-    <Layout title={"Search results"}>
+    <Layout>
       <div className="container">
         <div className="text-center">
           <h1>Search Resuts</h1>
@@ -17,7 +17,7 @@ const Search = () => {
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
